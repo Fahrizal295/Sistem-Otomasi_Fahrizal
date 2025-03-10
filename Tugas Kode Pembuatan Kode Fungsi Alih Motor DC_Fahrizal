@@ -1,0 +1,38 @@
+import sympy as sp
+
+# Definisi Variabel dan Parameter
+V, I, R, L, Kb, Kt, J, B, s = sp.symbols('V I R L Kb Kt J B s')
+
+# Definisi Fungsi Laplace
+I_s = sp.Function('I')(s)
+w_s = sp.Function('w')(s)
+
+# Model Persamaan Listrik Motor DC
+V_eq = sp.Eq(V, R*I + L*sp.Derivative(I))  # Persamaan listrik (Hukum Kirchoff)
+
+# Model Persamaan Mekanik Motor DC
+T = Kt * I  # Torsi Motor
+T_eq = sp.Eq(T, J * sp.Derivative(sp.symbols('w')) + B * sp.symbols('w'))  # Persamaan Mekanik
+
+# Transformasi Laplace dari Persamaan Listrik
+Laplace_V_eq = sp.Eq(V, R*I_s + L*s*I_s)
+
+# Transformasi Laplace dari Persamaan Mekanik
+Laplace_T_eq = sp.Eq(Kt*I_s, J*s*w_s + B*w_s)
+
+# Fungsi Alih Omega terhadap Tegangan
+I_s_sol = sp.solve(Laplace_V_eq, I_s)[0]
+w_s_sol = sp.solve(Laplace_T_eq, w_s)[0]
+H_s = sp.simplify(w_s_sol.subs(I_s, I_s_sol))  # Fungsi Alih w(s)/V(s)
+
+# Output dengan simbol
+print("Persamaan Listrik:")
+sp.pretty_print(V_eq)
+print("\nPersamaan Mekanik:")
+sp.pretty_print(T_eq)
+print("\nTransformasi Laplace Persamaan Listrik:")
+sp.pretty_print(Laplace_V_eq)
+print("\nTransformasi Laplace Persamaan Mekanik:")
+sp.pretty_print(Laplace_T_eq)
+print("\nFungsi Alih ω(s)/V(s):")
+sp.pretty_print(H_s)
