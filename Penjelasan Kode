@@ -1,0 +1,37 @@
+Nama : Fahrizal Ramadhany Hidayat
+NIM  : 235150301111038
+
+Penjelasan Kode: Model Motor DC dengan Transformasi Laplace
+
+Kode ini bertujuan untuk memodelkan sistem motor DC menggunakan persamaan listrik dan mekanik, kemudian menerapkan transformasi Laplace untuk mendapatkan fungsi alih kecepatan sudut terhadap tegangan masukan.
+
+-Definisi Variabel dan Parameter
+Beberapa variabel utama yang digunakan dalam model ini adalah:
+V: Tegangan input ke motor.
+I: Arus yang mengalir pada motor.
+R: Resistansi belitan motor.
+L: Induktansi belitan motor.
+Kb: Konstanta ggl balik (tidak digunakan dalam kode ini).
+Kt: Konstanta torsi motor.
+J: Momen inersia motor.
+B: Koefisien redaman motor.
+s: Variabel Laplace.
+
+-Persamaan Listrik Motor DC
+Persamaan yang digunakan berdasarkan hukum Kirchhoff:
+Persamaan ini menyatakan bahwa tegangan input terbagi antara tegangan akibat resistansi dan tegangan akibat induktansi
+
+-Persamaan Mekanik Motor DC
+Hubungan antara torsi dan Kecepatan sudut:
+Kemudian, hukum Newton untuk sistem rotasi:
+Persamaan ini menyatakan bahwa torsi yang dihasilkan oleh motor digunakan untuk mengatasi inersia dan gesekan.
+
+-Transformasi Laplace
+Persamaan listrik dalam domain Laplace:
+Persamaan mekanik dalam domain Laplace:
+Dengan menyelesaikan sistem persamaan ini, diperoleh fungsi alih:
+yang merepresentasikan hubungan antara tegangan input dan kecepatan sudut output dalam domain Laplace.
+
+-Kesimpulan
+Kode ini untuk menganalisis sistem motor DC menggunakan transformasi Laplace. Dengan fungsi alih yang diperoleh, kita dapat menganalisis karakteristik respon motor terhadap perubahan tegangan input.
+
